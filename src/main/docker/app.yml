@@ -1,0 +1,6 @@
+version: '2'
+services:
+  jhipster-app:
+    build: ../../..
+    container_name: jhipster-app
+    environment:
