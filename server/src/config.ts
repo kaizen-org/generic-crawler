@@ -7,7 +7,7 @@ const logger = new Logger('Config');
 
 export class Config {
     debugLogging = 'debug';
-    'server.port' = '8081';
+    'server.port' = '8082';
     'jhipster.clientApp.name' = 'jhipster';
     'jhipster.registry.password' = 'admin';
     'jhipster.security.authentication.jwt.base64-secret' = '';
@@ -20,7 +20,7 @@ export class Config {
     'jhipster.swagger.description' = 'jhipster API documentation';
     'jhipster.swagger.version' = '0.0.1';
     'jhipster.swagger.path' = '/api/v2/api-docs';
-    'eureka.client.enabled' = true;
+    'eureka.client.enabled' = false;
     'eureka.client.healthcheck.enabled' = true;
     'eureka.client.fetch-registry' = true;
     'eureka.client.register-with-eureka' = true;
