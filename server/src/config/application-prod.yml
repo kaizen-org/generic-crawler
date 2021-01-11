@@ -71,3 +71,5 @@ jhipster:
 # ===================================================================
 
 # application:
+mongo:
+  url: mongodb://localhost/nest
