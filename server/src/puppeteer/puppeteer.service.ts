@@ -29,7 +29,7 @@ export class PuppeteerService {
             //todo: ejecutar navigacion a medida hasta pagina que devuelve la info
             
 
-            let info=await this.codeHandlerService.obtainFirstNavigation(url);
+           // let info=await this.codeHandlerService.obtainFirstNavigation(url);
              
             await page.on('response', resp  =>  {
               // var header = resp.headers();

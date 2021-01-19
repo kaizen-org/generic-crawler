@@ -21,6 +21,17 @@ let ormconfig: TypeOrmModuleOptions = {
     cli: commonConf.CLI,
     migrationsRun: commonConf.MIGRATIONS_RUN,
 };
+let ormconfigMongo: TypeOrmModuleOptions = {
+    name: 'mongo',
+    type: "mongodb",
+    host: "localhost",
+    port: 27017,
+    database: "test",
+  
+  synchronize: false,
+    entities: [__dirname + '/schemas/*.schema{.ts,.js}'],
+  
+};
 
 if (process.env.NODE_ENV === 'prod') {
     ormconfig = {
@@ -52,4 +63,4 @@ if (process.env.NODE_ENV === 'test') {
     };
 }
 
-export { ormconfig };
+export { ormconfig, ormconfigMongo };
