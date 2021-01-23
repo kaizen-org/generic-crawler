@@ -24,11 +24,11 @@ let ormconfig: TypeOrmModuleOptions = {
 let ormconfigMongo: TypeOrmModuleOptions = {
     name: 'mongo',
     type: "mongodb",
+    
     host: "localhost",
     port: 27017,
     database: "test",
-  
-  synchronize: false,
+    synchronize: false,
     entities: [__dirname + '/schemas/*.schema{.ts,.js}'],
   
 };

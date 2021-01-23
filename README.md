@@ -114,6 +114,8 @@ Then, run a Sonar analysis in the server folder:
 
 For more information, refer to the [Code quality page][].
 
+docker run -d --name db -v ~/mongodata:/data/db -p 27017:27017 mongo:latest
+
 [jhipster homepage and latest documentation]: https://www.jhipster.tech
 [jhipster 6.8.0 archive]: https://www.jhipster.tech/documentation-archive/v6.8.0
 [doing microservices with jhipster]: https://www.jhipster.tech/documentation-archive/v6.8.0/microservices-architecture/

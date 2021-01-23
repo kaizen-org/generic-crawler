@@ -9,7 +9,7 @@ import { PuppeteerModule } from './puppeteer/puppeteer.module';
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot(ormconfig),
+       TypeOrmModule.forRoot(ormconfig),
         TypeOrmModule.forRoot(ormconfigMongo),
         AuthModule,
         PuppeteerModule,
