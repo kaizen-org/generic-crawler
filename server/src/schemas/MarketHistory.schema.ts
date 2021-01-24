@@ -17,6 +17,6 @@ export class MarketHistory {
     marketId: string;
 
     @Column(type => RunnerDetail)
-    runners: RunnerDetail[];
+    runnerDetails: RunnerDetail[];
 
     }

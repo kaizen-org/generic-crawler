@@ -1,0 +1,154 @@
+"_id" : ObjectId("600c7dbc1aeeae2274c569f5"),
+    "marketId" : "924.250723484",
+    "turnInPlayEnabled" : true,
+    "inplay" : false,
+    "bspMarket" : false,
+    "livePriceAvailable" : true,
+    "guaranteedPriceAvailable" : false,
+    "runnerDetails" : [ 
+        {
+            "selectionId" : 328949,
+            "runnerOrder" : 10,
+            "runnerOdds" : {
+                "trueOdds" : {
+                    "decimalOdds" : {
+                        "decimalOdds" : 2.5
+                    },
+                    "fractionalOdds" : {
+                        "numerator" : 3,
+                        "denominator" : 2
+                    }
+                },
+                "decimalDisplayOdds" : {
+                    "decimalOdds" : 2.5
+                },
+                "fractionalDisplayOdds" : {
+                    "numerator" : 3,
+                    "denominator" : 2
+                }
+            },
+            "winRunnerOdds" : {
+                "trueOdds" : {
+                    "decimalOdds" : {
+                        "decimalOdds" : 2.5
+                    },
+                    "fractionalOdds" : {
+                        "numerator" : 3,
+                        "denominator" : 2
+                    }
+                },
+                "decimalDisplayOdds" : {
+                    "decimalOdds" : 2.5
+                },
+                "fractionalDisplayOdds" : {
+                    "numerator" : 3,
+                    "denominator" : 2
+                }
+            },
+            "previousRunnerOdds" : [],
+            "previousWinRunnerOdds" : [],
+            "handicap" : 0,
+            "runnerStatus" : "ACTIVE"
+        }, 
+        {
+            "selectionId" : 58805,
+            "runnerOrder" : 20,
+            "runnerOdds" : {
+                "trueOdds" : {
+                    "decimalOdds" : {
+                        "decimalOdds" : 3.25
+                    },
+                    "fractionalOdds" : {
+                        "numerator" : 9,
+                        "denominator" : 4
+                    }
+                },
+                "decimalDisplayOdds" : {
+                    "decimalOdds" : 3.25
+                },
+                "fractionalDisplayOdds" : {
+                    "numerator" : 9,
+                    "denominator" : 4
+                }
+            },
+            "winRunnerOdds" : {
+                "trueOdds" : {
+                    "decimalOdds" : {
+                        "decimalOdds" : 3.25
+                    },
+                    "fractionalOdds" : {
+                        "numerator" : 9,
+                        "denominator" : 4
+                    }
+                },
+                "decimalDisplayOdds" : {
+                    "decimalOdds" : 3.25
+                },
+                "fractionalDisplayOdds" : {
+                    "numerator" : 9,
+                    "denominator" : 4
+                }
+            },
+            "previousRunnerOdds" : [],
+            "previousWinRunnerOdds" : [],
+            "handicap" : 0,
+            "runnerStatus" : "ACTIVE"
+        }, 
+        {
+            "selectionId" : 4468457,
+            "runnerOrder" : 30,
+            "runnerOdds" : {
+                "trueOdds" : {
+                    "decimalOdds" : {
+                        "decimalOdds" : 2.7
+                    },
+                    "fractionalOdds" : {
+                        "numerator" : 17,
+                        "denominator" : 10
+                    }
+                },
+                "decimalDisplayOdds" : {
+                    "decimalOdds" : 2.7
+                },
+                "fractionalDisplayOdds" : {
+                    "numerator" : 17,
+                    "denominator" : 10
+                }
+            },
+            "winRunnerOdds" : {
+                "trueOdds" : {
+                    "decimalOdds" : {
+                        "decimalOdds" : 2.7
+                    },
+                    "fractionalOdds" : {
+                        "numerator" : 17,
+                        "denominator" : 10
+                    }
+                },
+                "decimalDisplayOdds" : {
+                    "decimalOdds" : 2.7
+                },
+                "fractionalDisplayOdds" : {
+                    "numerator" : 17,
+                    "denominator" : 10
+                }
+            },
+            "previousRunnerOdds" : [],
+            "previousWinRunnerOdds" : [],
+            "handicap" : 0,
+            "runnerStatus" : "ACTIVE"
+        }
+    ],
+    "eachwayAvailable" : false,
+    "legTypes" : [ 
+        "WINCAST", 
+        "SIMPLE_SELECTION"
+    ],
+    "hasBPE" : false,
+    "hasSGM" : true,
+    "linkedMarketId" : "1.178142632",
+    "betDelay" : 3,
+    "rule4Deductions" : [],
+    "marketStatus" : "OPEN",
+    "bettingType" : "FIXED_ODDS"
+}

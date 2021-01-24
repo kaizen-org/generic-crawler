@@ -9,5 +9,8 @@ export class RunnerDetail {
     @Column()
     selectionId: string;
 
+    @Column()
+    quota: number;
+
    
     }
