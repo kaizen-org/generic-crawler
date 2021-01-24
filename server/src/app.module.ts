@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './module/auth.module';
-import { ormconfig } from './orm.config';
+import { ormconfig, ormconfigMongo } from './orm.config';
 import { PuppeteerModule } from './puppeteer/puppeteer.module';
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
@@ -9,7 +9,8 @@ import { PuppeteerModule } from './puppeteer/puppeteer.module';
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot(ormconfig),
+       TypeOrmModule.forRoot(ormconfig),
+        TypeOrmModule.forRoot(ormconfigMongo),
         AuthModule,
         PuppeteerModule,
     // jhipster-needle-add-entity-module-to-main - JHipster will add entity modules here, do not remove
