@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import puppeteer  from 'puppeteer';
-import { CrawConfig, CrawConfigDocument } from 'src/schemas/craw.config.schema';
 import { CodeHandlerService } from './code-handler/code-handler.service';
 @Injectable()
 export class PuppeteerService {

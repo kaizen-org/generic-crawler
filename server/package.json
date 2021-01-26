@@ -49,6 +49,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.3",
     "shelljs": "0.8.4",
+    "simple-git": "^2.31.0",
     "sqlite3": "5.0.0",
     "swagger-ui-express": "4.0.7",
     "typeorm": "^0.2.29",
