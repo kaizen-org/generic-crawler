@@ -16,7 +16,7 @@ export class GitService {
      * El repo git será el mismo que el de configuracion de spring cloud config
      * Este sirve los ficheros en modo texto a traves de las uris
      * http://server/{idMicro}/{entorno test,dev,pro..}/{git_branch}/{filename}
-     * http://localhost:8888/servicio-item/prod/master/servicio-item-prod.properties 
+     * http://localhost:8888/servicio-item/prod/main/application.yml
     **/
 
    
@@ -31,6 +31,7 @@ export class GitService {
         let crawlers : Crawler[] = await this.crawlerRepository.find({url:url});
         let result = await this.httpService.get(crawlers[0].navigationUrl);
         return await result.toPromise();
+        
     
     }
 }
