@@ -30,8 +30,7 @@ export class PuppeteerService {
             //eval("debugger;console.log('in eval');var executor=async function(){\ndebugger;\n await page.waitForSelector('#aaaa')};\n\nawait page.goto('https://www.google.es');");
             await(eval(code))();
           
-            //await executor();
-           // await exec(); 
+            
             await page.on('response', async resp  =>  {
               // var header = resp.headers();
               //resp.text().then(result => {
@@ -41,10 +40,16 @@ export class PuppeteerService {
             
               let data = await resp.text();
              
-              let dataNormalized = this.codeHandlerService.normalizeData(data);
-              this.codeHandlerService.processData(dataNormalized);
-              
+                try
+                {
+                  let dataNormalized = this.codeHandlerService.normalizeData(data);
+                  this.codeHandlerService.processData(dataNormalized,url);
+                }catch(e){
+                  console.error(e);
+                }
             });
+              
+          
           
           
     }
