@@ -23,14 +23,15 @@ export class PuppeteerService {
             });
             const page = await browser.newPage();
             await page.goto(url);
-            //await page.screenshot({path: 'example.png'});
-           
-
+                      
             //todo: ejecutar navigacion a medida hasta pagina que devuelve la info
-            
-
-            let info=await this.codeHandlerService.obtainFirstNavigation(url);
-             
+          
+            let code: string=await this.codeHandlerService.obtainFirstNavigation(url);
+            //eval("debugger;console.log('in eval');var executor=async function(){\ndebugger;\n await page.waitForSelector('#aaaa')};\n\nawait page.goto('https://www.google.es');");
+            await(eval(code))();
+          
+            //await executor();
+           // await exec(); 
             await page.on('response', async resp  =>  {
               // var header = resp.headers();
               //resp.text().then(result => {
@@ -48,4 +49,7 @@ export class PuppeteerService {
           
     }
 
+};
+var executor=async function(){
+  console.log("ERRROR");
 }

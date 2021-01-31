@@ -19,18 +19,23 @@ export class GitService {
      * http://localhost:8888/servicio-item/prod/main/application.yml
     **/
 
-   
-    async getMappers(url : string):Promise<any> {
+   /*
+   @todo: Solo implementado el happy path, falta exceptin en peticin de red y si la consulta no devuelve info
+   */
+    async getMappers(url : string):Promise<string> {
         let crawlers : Crawler[] = await this.crawlerRepository.find({url:url});
         let result = await this.httpService.get(crawlers[0].mapperUrl);
-        return await result.toPromise();
+        return (await result.toPromise()).data;
     
     }
 
-    async getNavigation(url : string):Promise<any> {
+     /*
+   @todo: Solo implementado el happy path, falta exceptin en peticin de red y si la consulta no devuelve info
+   */
+    async getNavigation(url : string):Promise<string> {
         let crawlers : Crawler[] = await this.crawlerRepository.find({url:url});
         let result = await this.httpService.get(crawlers[0].navigationUrl);
-        return await result.toPromise();
+        return  (await (result.toPromise())).data;
         
     
     }
