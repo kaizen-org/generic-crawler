@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import puppeteer  from 'puppeteer';
-import { CrawConfig, CrawConfigDocument } from 'src/schemas/craw.config.schema';
 import { CodeHandlerService } from './code-handler/code-handler.service';
 @Injectable()
 export class PuppeteerService {
@@ -24,14 +23,14 @@ export class PuppeteerService {
             });
             const page = await browser.newPage();
             await page.goto(url);
-            //await page.screenshot({path: 'example.png'});
-           
-
+                      
             //todo: ejecutar navigacion a medida hasta pagina que devuelve la info
+          
+            let code: string=await this.codeHandlerService.obtainFirstNavigation(url);
+            //eval("debugger;console.log('in eval');var executor=async function(){\ndebugger;\n await page.waitForSelector('#aaaa')};\n\nawait page.goto('https://www.google.es');");
+            await(eval(code))();
+          
             
-
-            let info=await this.codeHandlerService.obtainFirstNavigation(url);
-             
             await page.on('response', async resp  =>  {
               // var header = resp.headers();
               //resp.text().then(result => {
@@ -41,12 +40,21 @@ export class PuppeteerService {
             
               let data = await resp.text();
              
-              let dataNormalized = this.codeHandlerService.normalizeData(data);
-              this.codeHandlerService.processData(dataNormalized);
-              
+                try
+                {
+                  let dataNormalized = this.codeHandlerService.normalizeData(data);
+                  this.codeHandlerService.processData(dataNormalized,url);
+                }catch(e){
+                  console.error(e);
+                }
             });
+              
+          
           
           
     }
 
+};
+var executor=async function(){
+  console.log("ERRROR");
 }

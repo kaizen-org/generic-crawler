@@ -11,16 +11,18 @@
 # ===================================================================
 # Standard app properties.
 # ===================================================================
-
+# eureka.client.service-url.defaultZone=http://localhost:8761/eureka
 eureka:
   client:
-    enabled: false
+    enabled: true
     healthcheck:
       enabled: true
     fetch-registry: true
     register-with-eureka: true
     instance-info-replication-interval-seconds: 10
     registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: http://localhost:8761/eureka
   instance:
     appname: jhipster
     instanceId: jhipster:${random.value}
@@ -71,11 +73,11 @@ jhipster:
 
 cloud:
   config:
-    uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+    uri: http://localhost:8888
     # name of the config server's property source (file.yml) that we want to use
     name: jhipster
-    profile: prod # profile(s) of the property source
-    label: master # toggle to switch to a different version of the configuration as stored in git
+    profile: dev # profile(s) of the property source
+    label: main # toggle to switch to a different version of the configuration as stored in git
     # it can be set to any label, branch or commit of the configuration source Git repository
 # ===================================================================
 # Application specific properties

@@ -38,6 +38,7 @@ async function loadCloudConfig(): Promise<void> {
             endpoint,
             name: config.get('cloud.config.name'),
             profiles: config.get('cloud.config.profile') || ['prod'],
+            label: config.get('cloud.config.label') || 'main'
             // auth: {
             //   user: config.get('jhipster.registry.username') || 'admin',
             //   pass: config.get('jhipster.registry.password') || 'admin'
@@ -49,9 +50,9 @@ async function loadCloudConfig(): Promise<void> {
 
 function registerAsEurekaService(): void {
     if (useJHipsterRegistry) {
-        logger.log(`Registering with eureka ${config.get('cloud.config.uri')}`);
+        logger.log(`Registering with eureka ${config.get('eureka.client.service-url.defaultZone')}`);
         const Eureka = require('eureka-js-client').Eureka;
-        const eurekaUrl = require('url').parse(config.get('cloud.config.uri'));
+        const eurekaUrl = require('url').parse(config.get('eureka.client.service-url.defaultZone'));
         const client = new Eureka({
             instance: {
                 app: config.get('eureka.instance.appname'),
