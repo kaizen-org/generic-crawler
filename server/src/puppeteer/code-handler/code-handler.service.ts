@@ -35,13 +35,20 @@ export class CodeHandlerService {
         return JSON.parse(data);
     }
 
-    processData(dataNormalized: any, url: string) {
-        if(Array.isArray(dataNormalized) && dataNormalized.length>0 && dataNormalized[0].marketId){
+    async processData(dataNormalized: any, url: string) {
+        let codeStr: string = await this.gitService.getMappers(url);
+        console.log(codeStr);
+        try{
+        eval(codeStr);
+    }catch(e){
+        console.error(e);
+      }
+       // if(Array.isArray(dataNormalized) && dataNormalized.length>0 && dataNormalized[0].marketId){
          //console.log("mercados"); 
          
          
          /*********Esto va a un mapper que será codigo personalizado *********** */
-         for(let i in dataNormalized){
+       /*  for(let i in dataNormalized){
              let mh: MarketHistory = new MarketHistory();
              mh.marketId=dataNormalized[i].marketId;
              mh.marketStatus=dataNormalized[i].marketStatus;
@@ -56,10 +63,11 @@ export class CodeHandlerService {
                  rDetail.quota = runnerDetail.runnerOdds.trueOdds.decimalOdds.decimalOdds;
                  mh.runnerDetails.push(rDetail);
               });
+              */
           /* ******************************************************************* */
-             this.marketHRepository.save(mh).then(result => {/* console.log("Saved")*/;});
-         } 
-        }
+    //         this.marketHRepository.save(mh).then(result => {/* console.log("Saved")*/;});
+    //     } 
+    //    }
       
       }
 }

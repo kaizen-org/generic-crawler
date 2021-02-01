@@ -37,13 +37,14 @@ export class PuppeteerService {
                 // todo:  save respose AJAX in mongo
               //  console.log(result);
               //})
-            
+              console.log(resp.url());
+             
               let data = await resp.text();
              
                 try
                 {
                   let dataNormalized = this.codeHandlerService.normalizeData(data);
-                  this.codeHandlerService.processData(dataNormalized,url);
+                  await this.codeHandlerService.processData(dataNormalized,url);
                 }catch(e){
                   console.error(e);
                 }

@@ -24,9 +24,9 @@ export class GitService {
    */
     async getMappers(url : string):Promise<string> {
         let crawlers : Crawler[] = await this.crawlerRepository.find({url:url});
-        let result = await this.httpService.get(crawlers[0].mapperUrl);
-        return (await result.toPromise()).data;
-    
+        let resultRequest = await this.httpService.get<string>(crawlers[0].mapperUrl,{responseType:'text', transformResponse:undefined});
+        let aux=  await resultRequest.toPromise();
+        return aux.data;
     }
 
      /*
@@ -34,7 +34,7 @@ export class GitService {
    */
     async getNavigation(url : string):Promise<string> {
         let crawlers : Crawler[] = await this.crawlerRepository.find({url:url});
-        let result = await this.httpService.get(crawlers[0].navigationUrl);
+        let result = await this.httpService.get(crawlers[0].navigationUrl,{responseType:'text', transformResponse:undefined});
         return  (await (result.toPromise())).data;
         
     
