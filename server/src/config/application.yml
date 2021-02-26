@@ -22,7 +22,7 @@ eureka:
     instance-info-replication-interval-seconds: 10
     registry-fetch-interval-seconds: 10
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
   instance:
     appname: jhipster
     instanceId: jhipster:${random.value}
@@ -73,7 +73,7 @@ jhipster:
 
 cloud:
   config:
-    uri: http://localhost:8888
+    uri: http://config-server:8888
     # name of the config server's property source (file.yml) that we want to use
     name: jhipster
     profile: dev # profile(s) of the property source

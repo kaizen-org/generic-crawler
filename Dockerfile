@@ -1,10 +1,22 @@
 FROM node:12-alpine
 
+RUN echo 'crond' > /boot.sh
+
+RUN set -x \
+    && apk update \
+    && apk upgrade \
+    && apk add --no-cache \
+    udev \
+    ttf-freefont \
+    chromium
+
 # Create app directory
 
 WORKDIR /usr/node-app
 
-ENV NODE_SERVER_PORT=8081
+ENV NODE_SERVER_PORT=8082
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV CHROMIUM_PATH /usr/bin/chromium-browser
 
 COPY . .
 
@@ -20,6 +32,6 @@ WORKDIR ..
 
 RUN npm install
 
-EXPOSE 8081
+EXPOSE 8082
 
 ENTRYPOINT ["npm", "run", "start:app" ]

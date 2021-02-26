@@ -1,5 +1,6 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
+
 const commonConf = {
     SYNCRONIZE: false,
     ENTITIES: [__dirname + '/domain/*.entity{.ts,.js}'],
@@ -25,7 +26,7 @@ let ormconfigMongo: TypeOrmModuleOptions = {
     name: 'mongo',
     type: "mongodb",
     
-    host: "localhost",
+    host: "mongo",
     port: 27017,
     database: "test",
     synchronize: false,

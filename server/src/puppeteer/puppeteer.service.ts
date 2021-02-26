@@ -21,8 +21,11 @@ export class PuppeteerService {
             const browser = await puppeteer.launch({
               //executablePath:'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
               //executablePath: '"C:/Program Files/Google/Chrome/Application/chrome.exe"',
-              headless:false,
-              devtools: true
+              headless:true,
+              devtools: true,
+              executablePath: process.env.CHROMIUM_PATH,
+              
+              args: ['--no-sandbox'], // This was important. Can't remember why
             });
 
           

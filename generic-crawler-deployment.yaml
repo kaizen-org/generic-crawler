@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\gabriel.casascorral\generic-crawler\kompose.exe convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: generic-crawler
+  name: generic-crawler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: generic-crawler
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Users\gabriel.casascorral\generic-crawler\kompose.exe convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: generic-crawler
+    spec:
+      containers:
+      - image: genericcrawler:latest
+        imagePullPolicy: ""
+        name: generic-crawler
+        ports:
+        - containerPort: 8082
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

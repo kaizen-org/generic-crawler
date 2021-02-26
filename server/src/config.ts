@@ -45,6 +45,8 @@ export class Config {
     'loud.config.label' = 'master';
     'crypto.key' = '3772c1cdbd27c225735d116d1e4c5421a3aec26c919cc7ab457f21a4d16a1821';
     'crypto.iv' = '54f3ad979d9262d3a2dd4489531daf34';
+    'mongo.host' = 'localhost';
+    'mongo.port' = '27017';
 
     constructor(properties) {
         this.addAll(properties);

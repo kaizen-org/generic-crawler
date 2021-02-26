@@ -20,11 +20,15 @@ services:
     volumes:
       - ~/mongodata:/data/db
       - ~/mongodataconfig:/data/configdb
-  eureka_server:
+  eureka-server:
     image: eureka_server:latest
     ports:
       - "8761:8761"    
-  config_server:
+  config-server:
     image: config_server:latest
     ports:
       - "8888:8888"
+  generic-crawler:
+    image: genericcrawler:latest
+    ports:
+      - "8082:8082"    
