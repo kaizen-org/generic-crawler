@@ -32,6 +32,8 @@ WORKDIR ..
 
 RUN npm install
 
+RUN npm run buil:app
+
 EXPOSE 8082
 
 ENTRYPOINT ["npm", "run", "start:app" ]
