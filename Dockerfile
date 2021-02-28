@@ -32,7 +32,7 @@ WORKDIR ..
 
 RUN npm install
 
-RUN npm run buil:app
+RUN npm run build:app
 
 EXPOSE 8082
 
