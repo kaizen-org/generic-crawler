@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build:app": "cd server && npm run build",
+    "build:appdirty": "cd server && npm run build:dirty",
     "lint:fix": "echo \"INFO: no client found\"",
     "preinstall": "cd server && npm run lint:fix",
     "start:app": "cd server && npm run start",
