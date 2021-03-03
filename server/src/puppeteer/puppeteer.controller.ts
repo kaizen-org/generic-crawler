@@ -3,7 +3,7 @@ import { ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { LoggingInterceptor } from 'src/client/interceptors/logging.interceptor';
 import { PuppeteerService } from './puppeteer.service';
 /**
- * Controller that obtain custom code and do scrapind from web
+ * Controller that obtain custom code and do scraping from web
  */
 @Controller('puppeteer')
 @ApiUseTags('PuppeteerCrawler')
