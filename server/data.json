@@ -4,7 +4,7 @@
     "inplay" : false,
     "bspMarket" : false,
     "livePriceAvailable" : true,
-    "guaranteedPriceAvailable" : false,
+    "guaranteedPriceAvailable" : false ,
     "runnerDetails" : [ 
         {
             "selectionId" : 328949,
