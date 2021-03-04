@@ -12,7 +12,7 @@ describe('PuppeteerController', () => {
     controller = module.get<PuppeteerController>(PuppeteerController);
   });
 
-  it('should be defined', () => {
+  it('should be defined in test', () => {
     expect(controller).toBeDefined();
   });
 });
