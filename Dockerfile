@@ -28,7 +28,7 @@ WORKDIR server
 
 WORKDIR .
 
-
+EXPOSE 8082
 
  #RUN npm run build:appdirty 
  # No me hace falta, se lanza con la carpeta dist ya creada y generar errores de permisos en openshift
