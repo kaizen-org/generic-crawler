@@ -24,17 +24,13 @@ COPY . .
 
 WORKDIR server
 
-RUN npm install
 
-# install client deps
 
-WORKDIR ..
+WORKDIR .
 
-RUN npm install
+
 
  #RUN npm run build:appdirty 
  # No me hace falta, se lanza con la carpeta dist ya creada y generar errores de permisos en openshift
 
-EXPOSE 8082
-
-ENTRYPOINT ["npm", "run", "start:prod" ]
+ENTRYPOINT ["node", "dist/main.js"]
