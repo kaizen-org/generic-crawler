@@ -23,7 +23,7 @@ COPY . .
 # install server deps
 
 
-
+RUN npm install -g dotenv
 
 
 WORKDIR .
