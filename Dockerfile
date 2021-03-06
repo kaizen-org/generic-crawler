@@ -12,7 +12,7 @@ RUN set -x \
 
 # Create app directory
 
-WORKDIR /usr/node-app
+#WORKDIR /usr/node-app
 
 ENV NODE_SERVER_PORT=8082
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
@@ -23,7 +23,7 @@ COPY . .
 # install server deps
 
 
-RUN npm install -g dotenv
+
 
 
 WORKDIR .
