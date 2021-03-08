@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'prod') {
     ormconfig = {
         name: 'default',
         type: 'mysql',
-        database: 'jhipster',
+        database: 'process.env.MYSQL_DATABASE',
         url: 'mysql://YOUR_USER:YOUR_PWD@localhost:27017/jhipster',
         logging: false,
         synchronize: commonConf.SYNCRONIZE,
