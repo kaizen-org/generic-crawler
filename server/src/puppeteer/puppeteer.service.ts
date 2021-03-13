@@ -16,7 +16,7 @@ export class PuppeteerService {
       
     }
 
-    public async  executeCrawling(url:string):Promise<void> {
+    public async  executeCrawling(url:string):Promise<any> {
        
             const browser = await puppeteer.launch({
               //executablePath:'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
@@ -25,7 +25,7 @@ export class PuppeteerService {
               devtools: true,
               executablePath: process.env.CHROMIUM_PATH,
               
-              args: ['--no-sandbox'], // This was important. Can't remember why
+              args: ['--no-sandbox', '--remote-debugging-port=9222'], // This was important. Can't remember why
             });
 
           
@@ -40,7 +40,9 @@ export class PuppeteerService {
             //eval("debugger;console.log('in eval');var executor=async function(){\ndebugger;\n await page.waitForSelector('#aaaa')};\n\nawait page.goto('https://www.google.es');");
             await(eval(code))();
             }catch(e){
-                this.logger.error('Error en obtainFirstNavigation');
+                
+                this.logger.error('Error en obtainFirstNavigation',e);
+               throw e;
             }
             
             await page.on('response', async resp  =>  {
@@ -81,7 +83,7 @@ export class PuppeteerService {
               console.log('Network.webSocketFrameReceived', requestId, timestamp, response.payloadData)
             })
 
-           
+            return 'localhost:9222/json';
 
            
 
