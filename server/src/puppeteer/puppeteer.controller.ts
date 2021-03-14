@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus, Param, UseInterceptors } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { LoggingInterceptor } from 'src/client/interceptors/logging.interceptor';
 import { PuppeteerService } from './puppeteer.service';
@@ -23,7 +23,16 @@ export class PuppeteerController {
         isArray: true,
     })
     @Get('test/:url')
-    test(@Param('url') url : string= 'http://www.visualeconomy.com/'){
-        this.puppeteerService.executeCrawling(url);
+    async test(@Param('url') url : string= 'http://www.visualeconomy.com/'):Promise<any>{
+        try{
+        let result=await this.puppeteerService.executeCrawling(url);
+        return result;
+        }catch(e)
+        {
+            throw new HttpException({
+                status: HttpStatus.FORBIDDEN,
+                error: e.message,
+              }, HttpStatus.FORBIDDEN);
+        }
     }
 }
