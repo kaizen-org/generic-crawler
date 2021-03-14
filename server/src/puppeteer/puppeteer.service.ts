@@ -9,43 +9,52 @@ export class PuppeteerService {
 
 
   private codeHandlerService: CodeHandlerService;
+  private browser;
+  private page;
     constructor(codeHandlerService: CodeHandlerService){
       this.codeHandlerService = codeHandlerService;
-        console.log("here")
+        console.log("here");
         //this.executeCrawling('http://www.visualeconomy.com/');
+       (async () => {
+        this.browser = await puppeteer.launch({
+          //executablePath:'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+          //executablePath: '"C:/Program Files/Google/Chrome/Application/chrome.exe"',
+          headless:true,
+          devtools: true,
+          executablePath: process.env.CHROMIUM_PATH,
+          
+          args: ['--no-sandbox', '--remote-debugging-port=9222'], // This was important. Can't remember why
+        });
+         
+       })();  
       
     }
 
     public async  executeCrawling(url:string):Promise<any> {
-       
-            const browser = await puppeteer.launch({
-              //executablePath:'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-              //executablePath: '"C:/Program Files/Google/Chrome/Application/chrome.exe"',
-              headless:true,
-              devtools: true,
-              executablePath: process.env.CHROMIUM_PATH,
-              
-              args: ['--no-sandbox', '--remote-debugging-port=9222'], // This was important. Can't remember why
-            });
+      this.logger.log("executeCrawling");
+            
 
           
-            const page = await browser.newPage();
-            page.setDefaultNavigationTimeout(0); //desactiva el timeout de 30 segundos (valor en milliseconds)
-            await page.goto(url);
+            this.page = await this.browser.newPage();
+            this.page.setDefaultNavigationTimeout(0); //desactiva el timeout de 30 segundos (valor en milliseconds)
+            await this.page.goto(url);
                       
             //todo: ejecutar navigacion a medida hasta pagina que devuelve la info
-            
+             
             try{
             let code: string=await this.codeHandlerService.obtainFirstNavigation(url);
+            this.logger.log("Creando funcion");
+            var handler = new Function('page',code );
             //eval("debugger;console.log('in eval');var executor=async function(){\ndebugger;\n await page.waitForSelector('#aaaa')};\n\nawait page.goto('https://www.google.es');");
-            await(eval(code))();
+            await handler(this.page); //invoke the function using arguments
+           
             }catch(e){
                 
                 this.logger.error('Error en obtainFirstNavigation',e);
                throw e;
             }
             
-            await page.on('response', async resp  =>  {
+            await this.page.on('response', async resp  =>  {
               // var header = resp.headers();
               //resp.text().then(result => {
                 // todo:  save respose AJAX in mongo
@@ -64,7 +73,7 @@ export class PuppeteerService {
                 }
             });
 
-            const client = await page.target().createCDPSession();
+            const client = await this.page.target().createCDPSession();
             await client.send('Network.enable');
 
             client.on('Network.webSocketCreated', ({requestId, url}) => {
@@ -94,5 +103,8 @@ export class PuppeteerService {
           
     }
 
+    public async stopCrawling():Promise<any>{
+      this.page.close();
+    }
 };
 
