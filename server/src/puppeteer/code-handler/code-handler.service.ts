@@ -22,7 +22,9 @@ export class CodeHandlerService {
         @InjectRepository(Post, 'mongo') private postRepository: Repository<Post>,
         @InjectRepository(MarketHistory, 'mongo') private marketHRepository: Repository<MarketHistory>,
        private gitService: GitService
-        /*, @InjectRepository(PostRepository) private postRepository: Repository<PostRepository>*/){ }
+        /*, @InjectRepository(PostRepository) private postRepository: Repository<PostRepository>*/){ 
+            console.log("here");
+        }
 
     async obtainFirstNavigation(url:string):Promise<string>{
         let data: string = await this.gitService.getNavigation(url); 
