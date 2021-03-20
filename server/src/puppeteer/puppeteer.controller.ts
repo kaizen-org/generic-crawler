@@ -40,6 +40,30 @@ export class PuppeteerController {
         }
     }
 
+    @ApiOperation({ title: 'Execute the AJAX crawling in url specified in env URL_TO_CRAW' })
+    @ApiResponse({
+        status: 200,
+        description: 'undefined',
+        type: 'string',
+        isArray: true,
+    })
+    @Get('start/')
+    async startEnv(): Promise<any> {
+        this.logger.log("start crawling={}",process.env.URL_TO_CRAW);
+        try {
+            let result = await this.puppeteerService.executeCrawling(process.env.URL_TO_CRAW);
+            return result;
+        } catch (e) {
+            this.logger.error("ERROR={}",e);
+            throw new HttpException({
+                status: HttpStatus.FORBIDDEN,
+                error: e.message,
+            }, HttpStatus.FORBIDDEN);
+        }
+    }
+
+
+    
     @ApiOperation({ title: 'Stop the crawler' })
     @ApiResponse({
         status: 200,
