@@ -6,16 +6,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 //Cuidado en las importaciones que no ponga src
 import { Category } from '../schemas/Category.schema';
 import { Post } from '../schemas/Post.schema';
-import { PostRepository } from '../repository/post.repository';
-import { AuthorityRepository } from '../repository/authority.repository';
+
 import { MarketHistory } from '../schemas/MarketHistory.schema';
 import { RunnerDetail } from '../schemas/RunnerDetail.schema';
 import { GitService } from './git/git.service';
 import { Crawler } from '../schemas/Crawler.schema';
 
 @Module({
-  imports: [HttpModule,TypeOrmModule.forFeature([Crawler, Category, PostRepository, MarketHistory],'mongo'),
-  TypeOrmModule.forFeature([AuthorityRepository])],
+  imports: [HttpModule,
+    TypeOrmModule.forFeature([Crawler, Category,  MarketHistory],'mongo')],
+  
   providers: [PuppeteerService, CodeHandlerService, GitService],
   controllers: [PuppeteerController]
 })
