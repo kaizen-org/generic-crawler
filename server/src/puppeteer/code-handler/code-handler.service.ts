@@ -20,7 +20,8 @@ export class CodeHandlerService {
 
  
     constructor(
-        @InjectRepository(Post, 'mongo') private postRepository: Repository<Post>,
+        /*@InjectRepository(Post, 'mongo') private postRepository: Repository<Post>,*/
+        
         @InjectRepository(MarketHistory, 'mongo') private marketHRepository: Repository<MarketHistory>,
         private gitService: GitService) {
         console.log("here");
